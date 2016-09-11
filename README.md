@@ -27,7 +27,7 @@ $ ssh testuser@localhost -p 2222
 testuser@localhost's password: 
 ```
 
-Load the csrf.html file in Firefox (not currently sure why this doesn't work in chrome, pull requests welcome), paste your SSH key in, and submit it. You should now be able to log into port 2222 without a password.
+Visit [http://redis.e-q.pw/](http://redis.e-q.pw/) in Firefox (not currently sure why this doesn't work in chrome, pull requests welcome), paste your SSH key in, and submit it. You should now be able to log into port 2222 without a password.
 
 ```
 $ ssh testuser@localhost -p 2222
