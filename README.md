@@ -1,7 +1,7 @@
 # Damn Vulnerable Redis Container
 -----------------------------
 
-It's known there are security issues with running redis without authentication (which is the default behavior). [Others have shown](http://antirez.com/news/96) exposing redis on a port can obtain RCE (in this example, only if ssh is exposed). [Others have also shown](http://www.agarri.fr/kom/archives/2014/09/11/trying_to_hack_redis_via_http_requests/index.html) you can run Redis commands via CSRF.
+It's known there are security issues with running redis without authentication (which is the default behavior). [Others have shown](http://antirez.com/news/96) exposing redis on a port can lead to RCE (in this example, only if ssh is exposed). [Others have also shown](http://www.agarri.fr/kom/archives/2014/09/11/trying_to_hack_redis_via_http_requests/index.html) you can run Redis commands via CSRF.
 
 This docker image runs Redis and SSH, and provides a CSRF example, which will write your SSH key to the authorized_keys file, even if redis is not exposed, allowing an attacker to log in.
 
